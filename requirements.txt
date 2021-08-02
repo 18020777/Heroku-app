@@ -1,0 +1,4 @@
+Flask
+wtforms
+sqlalchemy
+bcrypt

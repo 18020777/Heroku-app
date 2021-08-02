@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+{% include "navbar.html" %}
+<title>Upload</title>
+<section class="hero is-primary is-bold is-small">
+  <div class="hero-body" style="background-color: lavender">
+    <div class="container has-text-centered">
+      <div id="settings" class="settings-box">
+        <div class="settings-area">    
+          <h1 class="title" style="color: black">Upload Image</h1>
+              <h1 style="color: black">Upload new File</h1>
+        <form style="background-color: lavender" method=post enctype=multipart/form-data>
+          <input class="input" style="border-color: lavender" type=file name=file>
+          <input class="input" style="border-color: lavender" type=submit value=Upload>
+        </form>
+          <br>
+          <a href="/" class="form-button button is-primary is-outlined">
+            <span>Exit</span>
+          </a>
+          <br>
+          <br>
+          <i><a id="feedback" class="feedback"></a></i>
+        </div>
+      </div>    
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="../static/js/scripts.js"></script>
+{% endblock %}

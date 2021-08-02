@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block body %}
+{% include "navbar.html" %}
+<section class="hero is-primary is-bold " style="background-color: red">
+      <div class="hero-body" style="background-color:lavender;font-size: 100%; color: black; display: flex;">
+          Fichier :  {{name}} Télécharger
+          <span></span>
+      </div>
+           <div class="hero"> <img class="fit-picture"
+     src="{{ url_for('download_file', name=name) }}"
+      ></div>
+
+</section>
+{% endblock %}
