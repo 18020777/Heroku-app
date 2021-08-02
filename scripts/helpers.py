@@ -4,6 +4,7 @@ from scripts import tabledef
 from flask import session
 from sqlalchemy.orm import sessionmaker
 from contextlib import contextmanager
+import bcrypt
 
 
 @contextmanager
@@ -47,6 +48,19 @@ def change_user(**kwargs):
             if val != "":
                 setattr(user, arg, val)
         s.commit()
+
+
+def hash_password(password):
+    return bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt())
+
+
+def credentials_valid(username, password):
+    with session_scope() as s:
+        user = s.query(tabledef.User).filter(tabledef.User.username.in_([username])).first()
+        if user:
+            return bcrypt.checkpw(password.encode('utf8'), user.password.encode('utf8'))
+        else:
+            return False
 
 
 def username_taken(username):
